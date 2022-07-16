@@ -10,9 +10,11 @@ const defaultFormFields = {
     password: "",
     confirmPassword: ""
 }
+console.log("after user context import in signup");
 function SignUp() {
     const [formFields, setforFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
+   console.log("inside signup");
     const resetFormFields=()=>{
         setforFields(defaultFormFields)
     }
@@ -23,6 +25,7 @@ function SignUp() {
         try{
         const {user}=await createAuthUserWithEmailAndPassword(email,password);
         console.log(user);
+        
         await createUserDocumentFromAuth(user,{displayName})
         resetFormFields();
     }
